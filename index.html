@@ -1,34 +1,68 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>My Password-Protected Website</title>
+	<title>Password Page</title>
+	<style>
+		body {
+			background-image: url('https://i.pinimg.com/originals/ea/f4/85/eaf4857bb45fec7a4592f750bf20a1d7.png');
+			background-size: cover;
+			background-position: center;
+			font-family: Arial, sans-serif;
+			text-align: center;
+			margin: 0;
+			padding: 0;
+		}
+		h1 {
+			color: white;
+			font-size: 2.5rem;
+			margin-top: 30vh;
+			margin-bottom: 3vh;
+		}
+		form {
+			display: inline-block;
+		}
+		input[type=password] {
+			padding: 1rem;
+			font-size: 1.5rem;
+			border-radius: 5px;
+			border: none;
+			box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+			margin-right: 1rem;
+		}
+		input[type=submit] {
+			background-color: white;
+			color: #555;
+			padding: 1rem 2rem;
+			font-size: 1.5rem;
+			border-radius: 5px;
+			border: none;
+			box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+			cursor: pointer;
+			transition: background-color 0.3s ease;
+		}
+		input[type=submit]:hover {
+			background-color: #555;
+			color: white;
+		}
+		p {
+			color: blue;
+			font-size: 2.5rem;
+			margin-top: 10vh;
+		}
+	</style>
 </head>
 <body>
-	<h1>Enter the password to access the site:</h1>
-	<form onsubmit="return checkPassword()">
-		<input type="password" placeholder="Password" id="password">
-		<button type="submit">Submit</button>
+	<h1>Welcome to my website</h1>
+	<form action="" method="post">
+		<label for="password">Please enter the password:</label>
+		<input type="password" name="password" id="password">
+		<input type="submit" value="Submit">
 	</form>
-
-	<div id="content" style="display: none;">
-		<!-- Your website content goes here -->
-		<h2>Welcome to my website!</h2>
-		<p>This is a private website for me and my friends.</p>
-		<p>Thanks for visiting!</p>
-	</div>
-
-	<script>
-		function checkPassword() {
-			var password = "Dreaming?";
-			var input = document.getElementById("password");
-			if (input.value == password) {
-				document.getElementById("content").style.display = "block";
-				return true;
-			} else {
-				alert("Incorrect password. Please try again.");
-				return false;
-			}
+	
+	<?php
+		if(isset($_POST['password']) && $_POST['password'] === 'Dreaming?'){
+			echo '<p>Do not wake me</p>';
 		}
-	</script>
+	?>
 </body>
 </html>
